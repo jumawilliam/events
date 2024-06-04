@@ -6,8 +6,18 @@ state(['todos']);
 
 mount(function(){
     $this->todos=Todo::all();
+
 });
 
+
+$refreshAllTodos=function(){
+    $this->todos=Todo::all();
+};
+
+
+on(['refresh-todos'=>function(){
+    $this->refreshAllTodos();
+}]);
 
 
 $completed=function($id){
@@ -20,7 +30,7 @@ $completed=function($id){
 
 $delete=function($id){
     Todo::find($id)->delete();
-
+    $this->refreshAllTodos();
 };
 
 ?>

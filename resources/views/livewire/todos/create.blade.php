@@ -1,6 +1,6 @@
 <?php
 use App\Models\Todo;
-use function Livewire\Volt\{state};
+use function Livewire\Volt\{state,updated};
 
 state(['title']);
 
@@ -11,7 +11,12 @@ $save=function(){
     Todo::create($validated);
     $this->reset('title');
 
+    $this->dispatch('refresh-todos');
+    $this->dispatch('show-alert',message:'Todo created successfully');
+
 };
+
+
 
 ?>
 
@@ -27,5 +32,6 @@ $save=function(){
           <input   type="submit" value="Add Todo" />
         </fieldset>
       </form>
+
 </div>
 

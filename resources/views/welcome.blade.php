@@ -19,13 +19,16 @@
               <li><button class="secondary">Products</button></li>
             </ul>
           </nav>
-
+          <livewire:alert />
           <div class="grid">
             <div>
                 <livewire:todos.create />
             </div>
             <div>
                 <livewire:todos.index />
+            </div>
+            <div>
+                <livewire:search />
             </div>
           </div>
     </main>
